@@ -32,6 +32,32 @@
 $ npm install
 ```
 
+## Migration
+
+```bash
+# create new migration
+$ npm run migration:create {name}
+
+# run migration
+$ npm run migration:run
+
+# rollback migration
+$ npm run migration:rollback
+```
+
+## Seeding
+
+```bash
+# create new seeding
+$ npm run seed:create {name}
+
+# run seeding
+$ npm run seed:run
+
+# rollback seeding
+$ npm run seed:rollback
+```
+
 ## Running the app
 
 ```bash
