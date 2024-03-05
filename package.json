@@ -17,12 +17,21 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node -r tsconfig-paths/register node_modules/.bin/typeorm",
+    "migration:create": "f() { yarn typeorm migration:create \"./src/database/migrations/$@\"; }; f",
+    "migration:generate": "f() { yarn typeorm migration:generate -d ./src/database/typeorm.config.ts \"./src/database/migrations/$@\"; }; f",
+    "migration:run": "yarn typeorm migration:run -d ./src/database/typeorm.config.ts",
+    "migration:rollback": "yarn typeorm migration:revert -d ./src/database/typeorm.config.ts",
+    "seed:create": "f() { yarn typeorm migration:create \"./src/database/seeds/$@\"; }; f",
+    "seed:run": "yarn typeorm migration:run -d ./src/database/seed.config.ts",
+    "seed:rollback": "yarn typeorm migration:revert -d ./src/database/seed.config.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.2.0",
     "@nestjs/core": "^10.0.0",
+    "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^10.0.2",
     "pg": "^8.11.3",

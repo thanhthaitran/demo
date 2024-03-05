@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserService } from './module/user/user.service';
-import { UserModule } from './module/user/user.module';
 import configurations from './config';
 import { configDb } from './config/const';
+import { UserModule } from './module/user/user.module';
 
 const modules = [UserModule];
 
@@ -22,6 +21,5 @@ const modules = [UserModule];
     }),
     ...modules,
   ],
-  providers: [UserService],
 })
 export class MainModule {}
